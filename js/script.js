@@ -237,46 +237,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Contact form functionality
-const contactForm = document.querySelector('.contact-form');
-const inputs = document.querySelectorAll('.input-group input, .input-group textarea');
 
-inputs.forEach(input => {
-    input.addEventListener('focus', () => {
-        input.parentElement.classList.add('focused');
-    });
-    
-    input.addEventListener('blur', () => {
-        if (!input.value) {
-            input.parentElement.classList.remove('focused');
-        }
-    });
-});
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
-    
-    // Simple validation
-    if (!name || !email || !message) {
-        showNotification('Please fill in all fields', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
-    contactForm.reset();
-    
-    // Remove focused class from all inputs
-    inputs.forEach(input => {
-        input.parentElement.classList.remove('focused');
-    });
-});
 
 // Notification system
 function showNotification(message, type = 'info') {
@@ -625,6 +586,20 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// FAQ Accordion
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+        const currentlyActive = document.querySelector('.faq-item.active');
+        if (currentlyActive && currentlyActive !== item) {
+            currentlyActive.classList.remove('active');
+        }
+        item.classList.toggle('active');
+    });
+});
+
 // Initialize everything
 initParticles();
 animateParticles();
@@ -636,24 +611,11 @@ const loadingScreen = document.getElementById('loading-screen');
 document.body.style.opacity = '0';
 
 // Hide loading screen after everything loads
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
+    loadingScreen.style.opacity = '0';
     setTimeout(() => {
-        loadingScreen.style.opacity = '0';
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-            document.body.style.opacity = '1';
-            document.body.style.transition = 'opacity 0.5s ease';
-        }, 500);
-    }, 2000); // Show loading for at least 2 seconds
+        loadingScreen.style.display = 'none';
+        document.body.style.opacity = '1';
+        document.body.style.transition = 'opacity 0.5s ease';
+    }, 500);
 });
-
-// Fallback - hide loading screen after 5 seconds max
-setTimeout(() => {
-    if (loadingScreen.style.display !== 'none') {
-        loadingScreen.style.opacity = '0';
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-            document.body.style.opacity = '1';
-        }, 500);
-    }
-}, 5000);

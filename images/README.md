@@ -21,10 +21,35 @@ This directory contains the team logo and other images for the website.
    - Loading screen
    - Browser favicon
 
+## Gallery and Project Images
+
+To add images to the gallery and projects sections, follow these naming conventions:
+
+### Gallery Images
+
+- **File Name Format**: `gallery-<number>.jpg` (e.g., `gallery-1.jpg`, `gallery-2.jpg`)
+- **Purpose**: Images to be displayed in the gallery section.
+- **Usage**: The website will automatically look for images with this naming pattern.
+
+### Project Images
+
+- **File Name Format**: `project-<name>.jpg` (e.g., `project-alpha.jpg`, `project-beta.jpg`)
+- **Purpose**: Images for specific projects.
+- **Usage**: The website will use these images in the projects section. Make sure the name in the file corresponds to the project name.
+
 ## File Structure:
 ```
 images/
 ├── team-logo.png          (Your team logo)
+├── gallery-1.jpg          (Gallery image)
+├── gallery-2.jpg          (Gallery image)
+├── gallery-3.jpg          (Gallery image)
+├── gallery-4.jpg          (Gallery image)
+├── gallery-5.jpg          (Gallery image)
+├── gallery-6.jpg          (Gallery image)
+├── project-alpha.jpg      (Project image)
+├── project-beta.jpg       (Project image)
+├── project-gamma.jpg      (Project image)
 └── README.md             (This file)
 ```
 
