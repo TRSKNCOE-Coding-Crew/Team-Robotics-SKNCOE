@@ -3,31 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Robotics SKNCOE - Futuristic Robotics Team</title>
+    <title>Team Robotics SKNCOE</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="C:\Users\anayd\Downloads\image-removebg-preview (1).png" type="image/png">
 </head>
 <body>
     <canvas id="particle-canvas"></canvas>
 
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo-container">
+                <img src="C:\Users\anayd\Downloads\image-removebg-preview (1).png" alt="Team Robotics SKNCOE Logo" class="loading-logo-img">
+                <div class="loading-logo-text">TRSKNCOE</div>
+            </div>
+            <div class="loading-text">Loading Future...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <header>
         <nav>
-            <div class="logo">TRC</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <div class="logo">
+                <img src="C:\Users\anayd\Downloads\image-removebg-preview (1).png" alt="Team Robotics SKNCOE Logo" class="team-logo">
+                <span class="logo-text">TRSKNCOE</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#teams" class="nav-link">Teams</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>TEAM ROBOTICS SKNCOE</h1>
-                <p>Building the Future, One Robot at a Time</p>
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line">TEAM ROBOTICS</span>
+                        <span class="title-line">SKNCOE</span>
+                    </h1>
+                    <p class="hero-subtitle">Building the Future, One Robot at a Time</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Active Members</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Domains</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="robot-container">
+                    <div class="robot-body">
+                        <div class="robot-head"></div>
+                        <div class="robot-torso"></div>
+                        <div class="robot-arm left"></div>
+                        <div class="robot-arm right"></div>
+                        <div class="robot-leg left"></div>
+                        <div class="robot-leg right"></div>
+                    </div>
+                    <div class="circuit-lines">
+                        <div class="line line-1"></div>
+                        <div class="line line-2"></div>
+                        <div class="line line-3"></div>
+                    </div>
+                </div>
             </div>
-            <div id="robot-animation"></div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+                <span>Scroll to explore</span>
+            </div>
         </section>
 
         <section id="about" class="about-section">
@@ -47,6 +111,229 @@
                 </div>
             </div>
         </section>
+
+        <!-- Teams Section -->
+        <section id="teams" class="teams-section">
+            <div class="section-header">
+                <h2>Our Teams</h2>
+                <p>Specialized domains working together to build the future</p>
+            </div>
+            
+            <div class="teams-container">
+                <!-- Technical Teams -->
+                <div class="team-category">
+                    <h3 class="category-title">Technical Teams</h3>
+                    <div class="teams-grid">
+                        <div class="team-card automation">
+                            <div class="team-icon">
+                                <div class="gear-icon"></div>
+                            </div>
+                            <h4>Automation Team</h4>
+                            <p>Developing intelligent control systems and autonomous behaviors for our robots.</p>
+                            <div class="team-skills">
+                                <span class="skill-tag">AI/ML</span>
+                                <span class="skill-tag">Computer Vision</span>
+                                <span class="skill-tag">Control Systems</span>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card electronics">
+                            <div class="team-icon">
+                                <div class="circuit-icon"></div>
+                            </div>
+                            <h4>Electronics Team</h4>
+                            <p>Designing and implementing the electronic backbone of our robotic systems.</p>
+                            <div class="team-skills">
+                                <span class="skill-tag">PCB Design</span>
+                                <span class="skill-tag">Embedded Systems</span>
+                                <span class="skill-tag">Sensor Integration</span>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card mechanical">
+                            <div class="team-icon">
+                                <div class="wrench-icon"></div>
+                            </div>
+                            <h4>Mechanical Team</h4>
+                            <p>Creating robust and efficient mechanical designs for optimal robot performance.</p>
+                            <div class="team-skills">
+                                <span class="skill-tag">CAD Design</span>
+                                <span class="skill-tag">3D Printing</span>
+                                <span class="skill-tag">Manufacturing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Non-Technical Teams -->
+                <div class="team-category">
+                    <h3 class="category-title">Support Teams</h3>
+                    <div class="teams-grid">
+                        <div class="team-card social">
+                            <div class="team-icon">
+                                <div class="social-icon"></div>
+                            </div>
+                            <h4>Social Media</h4>
+                            <p>Managing our online presence and connecting with the robotics community.</p>
+                        </div>
+                        
+                        <div class="team-card documentation">
+                            <div class="team-icon">
+                                <div class="doc-icon"></div>
+                            </div>
+                            <h4>Documentation</h4>
+                            <p>Creating comprehensive guides and maintaining project documentation.</p>
+                        </div>
+                        
+                        <div class="team-card outreach">
+                            <div class="team-icon">
+                                <div class="outreach-icon"></div>
+                            </div>
+                            <h4>Outreach</h4>
+                            <p>Organizing workshops and spreading robotics awareness in the community.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="achievements-section">
+            <div class="section-header">
+                <h2>Our Achievements</h2>
+                <p>Milestones that define our journey in robotics</p>
+            </div>
+            
+            <div class="achievements-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="achievement-card">
+                            <div class="achievement-icon trophy"></div>
+                            <h4>National Robotics Championship 2024</h4>
+                            <p class="achievement-date">December 2024</p>
+                            <p class="achievement-desc">Secured 2nd place in the autonomous robot category with our flagship project.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="achievement-card">
+                            <div class="achievement-icon medal"></div>
+                            <h4>Tech Innovation Award</h4>
+                            <p class="achievement-date">October 2024</p>
+                            <p class="achievement-desc">Recognized for breakthrough in sensor fusion technology.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="achievement-card">
+                            <div class="achievement-icon star"></div>
+                            <h4>Best Design Award</h4>
+                            <p class="achievement-date">August 2024</p>
+                            <p class="achievement-desc">Awarded for innovative mechanical design in the regional competition.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="achievement-card">
+                            <div class="achievement-icon rocket"></div>
+                            <h4>First Competition Win</h4>
+                            <p class="achievement-date">March 2024</p>
+                            <p class="achievement-desc">Our debut competition victory marked the beginning of our competitive journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <p>Moments from our robotics journey</p>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="competitions">
+                        <img src="https://via.placeholder.com/400x300/1a1a2e/00ffff?text=Competition+2024" alt="Competition 2024">
+                        <div class="gallery-overlay">
+                            <h4>Competition 2024</h4>
+                            <p>Our team at the national championship</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="workshops">
+                        <img src="https://via.placeholder.com/400x300/1a1a2e/00ff00?text=Workshop+Session" alt="Workshop Session">
+                        <div class="gallery-overlay">
+                            <h4>Workshop Session</h4>
+                            <p>Teaching robotics to young minds</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="projects">
+                        <img src="https://via.placeholder.com/400x300/1a1a2e/ff00ff?text=Project+Build" alt="Project Build">
+                        <div class="gallery-overlay">
+                            <h4>Project Build</h4>
+                            <p>Working on our latest robot prototype</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="team">
+                        <img src="https://via.placeholder.com/400x300/1a1a2e/ffff00?text=Team+Meeting" alt="Team Meeting">
+                        <div class="gallery-overlay">
+                            <h4>Team Meeting</h4>
+                            <p>Strategic planning session</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="competitions">
+                        <img src="https://via.placeholder.com/400x300/1a1a2e/ff6600?text=Award+Ceremony" alt="Award Ceremony">
+                        <div class="gallery-overlay">
+                            <h4>Award Ceremony</h4>
+                            <p>Celebrating our achievements</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="projects">
+                        <img src="https://via.placeholder.com/400x300/1a1a2e/00ffcc?text=Robot+Testing" alt="Robot Testing">
+                        <div class="gallery-overlay">
+                            <h4>Robot Testing</h4>
+                            <p>Field testing our autonomous robot</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="competitions">Competitions</button>
+                    <button class="filter-btn" data-filter="projects">Projects</button>
+                    <button class="filter-btn" data-filter="workshops">Workshops</button>
+                    <button class="filter-btn" data-filter="team">Team</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox for Gallery -->
+        <div id="lightbox" class="lightbox">
+            <div class="lightbox-content">
+                <span class="lightbox-close">&times;</span>
+                <img id="lightbox-img" src="" alt="">
+                <div class="lightbox-caption">
+                    <h4 id="lightbox-title"></h4>
+                    <p id="lightbox-desc"></p>
+                </div>
+            </div>
+        </div>
 
         <section id="projects" class="projects-section">
             <h2>Our Projects</h2>
@@ -97,10 +384,9 @@
 
     <footer>
         <div class="social-icons">
-            <a href="#">FB</a>
-            <a href="#">TW</a>
-            <a href="#">IG</a>
-            <a href="#">GH</a>
+            <a href="https://www.instagram.com/skncoerobotics/?hl=en" target="_blank">IG</a>
+            <a href="https://www.linkedin.com/school/trskncoe/posts/?feedView=all" target="_blank">LI</a>
+            <a href="https://discord.gg/xMA5jMyU" target="_blank">DC</a>
         </div>
         <p>&copy; 2025 Team Robotics SKNCOE. All Rights Reserved.</p>
     </footer>
