@@ -309,13 +309,204 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
+// Interactive Holographic Display and Mouse Effects
+const holographicDisplay = document.getElementById('holographic-display');
+const mouseTrailCanvas = document.getElementById('mouse-trail-canvas');
+const dynamicBackground = document.getElementById('dynamic-background');
+const mouseTrailCtx = mouseTrailCanvas.getContext('2d');
+
+// Set canvas size
+mouseTrailCanvas.width = window.innerWidth;
+mouseTrailCanvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+    mouseTrailCanvas.width = window.innerWidth;
+    mouseTrailCanvas.height = window.innerHeight;
+});
+
+// Mouse trail particles
+let trailParticles = [];
+const maxTrailParticles = 30;
+
+class TrailParticle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 2 + 1;
+        this.life = 1.0;
+        this.decay = Math.random() * 0.03 + 0.01;
+        this.vx = (Math.random() - 0.5) * 3;
+        this.vy = (Math.random() - 0.5) * 3;
+        this.color = `hsl(${Math.floor(Math.random() * 60 + 20)}, 100%, ${Math.floor(Math.random() * 30 + 50)}%)`;
+    }
+    
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.life -= this.decay;
+        this.vx *= 0.98;
+        this.vy *= 0.98;
+    }
+    
+    draw() {
+        mouseTrailCtx.save();
+        mouseTrailCtx.globalAlpha = this.life;
+        mouseTrailCtx.fillStyle = this.color;
+        mouseTrailCtx.beginPath();
+        mouseTrailCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        mouseTrailCtx.fill();
+        mouseTrailCtx.restore();
+    }
+}
+
+// Mouse tracking variables
+let mouseX = 0;
+let mouseY = 0;
+
+// Mouse move handler
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // Add trail particles
+    if (trailParticles.length < maxTrailParticles) {
+        trailParticles.push(new TrailParticle(mouseX, mouseY));
+    }
+    
+    // Update dynamic background
+    const centerX = (mouseX / window.innerWidth) * 100;
+    const centerY = (mouseY / window.innerHeight) * 100;
+    dynamicBackground.style.background = `radial-gradient(circle at ${centerX}% ${centerY}%, rgba(255, 102, 0, 0.08) 0%, transparent 70%)`;
+    
+    // Holographic display interaction
+    if (holographicDisplay) {
+        const displayRect = holographicDisplay.getBoundingClientRect();
+        const displayCenterX = displayRect.left + displayRect.width / 2;
+        const displayCenterY = displayRect.top + displayRect.height / 2;
+        
+        const deltaX = mouseX - displayCenterX;
+        const deltaY = mouseY - displayCenterY;
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        
+        // Display tilt based on mouse position
+        const maxTilt = 8;
+        const tiltX = (deltaY / distance) * maxTilt;
+        const tiltY = (deltaX / distance) * maxTilt;
+        
+        holographicDisplay.style.transform = `perspective(1000px) rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+        
+        // Display brightness based on mouse proximity
+        const maxDistance = 400;
+        const intensity = Math.max(0.5, 1 - (distance / maxDistance) * 0.5);
+        
+        holographicDisplay.style.filter = `brightness(${1 + intensity * 0.3}) saturate(${1 + intensity * 0.2})`;
+        
+        // Data bars animation based on mouse proximity
+        const dataItems = document.querySelectorAll('.data-item');
+        dataItems.forEach((item, index) => {
+            const proximity = Math.max(0, 1 - (distance / maxDistance));
+            const delay = index * 0.1;
+            
+            setTimeout(() => {
+                const dataFill = item.querySelector('.data-fill');
+                if (dataFill) {
+                    dataFill.style.animation = 'none';
+                    dataFill.offsetHeight; // Trigger reflow
+                    dataFill.style.animation = `dataFill ${1 + proximity}s ease-out forwards`;
+                }
+            }, delay * 1000);
+        });
+        
+        // Particle effects intensity
+        const particles = document.querySelectorAll('.particle');
+        particles.forEach((particle, index) => {
+            const particleIntensity = Math.min(1, distance / 300);
+            particle.style.opacity = 0.3 + (1 - particleIntensity) * 0.7;
+            particle.style.transform = `scale(${1 + (1 - particleIntensity) * 0.5})`;
+        });
+        
+        // Scan line speed based on mouse movement
+        const scanLine = document.querySelector('.scan-line-animated');
+        if (scanLine) {
+            const speed = Math.max(4, 8 - (distance / maxDistance) * 4);
+            scanLine.style.animationDuration = `${speed}s`;
+        }
+    }
+});
+
+// Mouse leave handler
+document.addEventListener('mouseleave', () => {
+    if (holographicDisplay) {
+        holographicDisplay.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        holographicDisplay.style.filter = 'brightness(1) saturate(1)';
+    }
+    
+    // Reset background
+    dynamicBackground.style.background = 'radial-gradient(circle at 50% 50%, rgba(255, 102, 0, 0.05) 0%, transparent 70%)';
+});
+
+// Animation loop for trail particles
+function animateTrail() {
+    mouseTrailCtx.clearRect(0, 0, mouseTrailCanvas.width, mouseTrailCanvas.height);
+    
+    // Update and draw particles
+    trailParticles = trailParticles.filter(particle => {
+        particle.update();
+        particle.draw();
+        return particle.life > 0;
+    });
+    
+    requestAnimationFrame(animateTrail);
+}
+
+// Start trail animation
+animateTrail();
+
+// Data counter animation
+function animateDataCounters() {
+    const dataValues = document.querySelectorAll('.data-value');
+    
+    dataValues.forEach((value, index) => {
+        const target = value.textContent.replace(/\D/g, '');
+        const suffix = value.textContent.replace(/\d/g, '');
+        let current = 0;
+        const increment = target / 60;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            value.textContent = Math.floor(current) + suffix;
+        }, 50 + index * 20);
+    });
+}
+
+// Trigger counter animation when hologram is visible
+const hologramObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                animateDataCounters();
+            }, 1000);
+            hologramObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (holographicDisplay) {
+        hologramObserver.observe(holographicDisplay);
+    }
+});
 // Parallax effect for hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    const robotContainer = document.querySelector('.robot-container');
+    const hologramContainer = document.querySelector('.hologram-container');
     
-    if (robotContainer) {
-        robotContainer.style.transform = `translateY(${scrolled * 0.3}px)`;
+    if (hologramContainer) {
+        hologramContainer.style.transform = `translateY(${scrolled * 0.2}px)`;
     }
 });
 

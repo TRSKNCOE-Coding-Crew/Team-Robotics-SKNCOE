@@ -10,6 +10,8 @@
 </head>
 <body>
     <canvas id="particle-canvas"></canvas>
+    <canvas id="mouse-trail-canvas"></canvas>
+    <div id="dynamic-background"></div>
 
     <!-- Loading Screen -->
     <div id="loading-screen">
@@ -72,19 +74,98 @@
                         </div>
                     </div>
                 </div>
-                <div class="robot-container">
-                    <div class="robot-body">
-                        <div class="robot-head"></div>
-                        <div class="robot-torso"></div>
-                        <div class="robot-arm left"></div>
-                        <div class="robot-arm right"></div>
-                        <div class="robot-leg left"></div>
-                        <div class="robot-leg right"></div>
-                    </div>
-                    <div class="circuit-lines">
-                        <div class="line line-1"></div>
-                        <div class="line line-2"></div>
-                        <div class="line line-3"></div>
+                <div class="hologram-container">
+                    <div class="holographic-display" id="holographic-display">
+                        <!-- Hologram Frame -->
+                        <div class="hologram-frame">
+                            <div class="frame-corner top-left"></div>
+                            <div class="frame-corner top-right"></div>
+                            <div class="frame-corner bottom-left"></div>
+                            <div class="frame-corner bottom-right"></div>
+                            <div class="frame-line horizontal top"></div>
+                            <div class="frame-line horizontal bottom"></div>
+                            <div class="frame-line vertical left"></div>
+                            <div class="frame-line vertical right"></div>
+                        </div>
+                        
+                        <!-- Holographic Content -->
+                        <div class="hologram-content">
+                            <!-- Header -->
+                            <div class="hologram-header">
+                                <div class="scan-line"></div>
+                                <h3>TEAM ROBOTICS SKNCOE</h3>
+                                <div class="status-indicator">
+                                    <div class="status-dot active"></div>
+                                    <span>ONLINE</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Data Grid -->
+                            <div class="data-grid">
+                                <div class="data-item" data-value="13">
+                                    <div class="data-label">YEARS ACTIVE</div>
+                                    <div class="data-value">13</div>
+                                    <div class="data-bar">
+                                        <div class="data-fill"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="data-item" data-value="100">
+                                    <div class="data-label">TOTAL AWARDS</div>
+                                    <div class="data-value">100+</div>
+                                    <div class="data-bar">
+                                        <div class="data-fill"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="data-item" data-value="50">
+                                    <div class="data-label">1ST PLACE WINS</div>
+                                    <div class="data-value">50+</div>
+                                    <div class="data-bar">
+                                        <div class="data-fill"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="data-item" data-value="5">
+                                    <div class="data-label">DOMAINS</div>
+                                    <div class="data-value">5</div>
+                                    <div class="data-bar">
+                                        <div class="data-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Achievement Stream -->
+                            <div class="achievement-stream">
+                                <div class="stream-header">RECENT ACHIEVEMENTS</div>
+                                <div class="stream-items">
+                                    <div class="stream-item">🏆 Robotex India 2025 - Overall Championship</div>
+                                    <div class="stream-item">🥇 IIT Kharagpur Kshitij - 1st Runner-up</div>
+                                    <div class="stream-item">🥈 IIT Roorkee Cognizance - 2nd Prize</div>
+                                    <div class="stream-item">🏆 Sinhgad Techtonic - 9 Prizes</div>
+                                    <div class="stream-item">🏆 Robotex India 2025 - Overall Championship</div>
+                                    <div class="stream-item">🥇 IIT Kharagpur Kshitij - 1st Runner-up</div>
+                                    <div class="stream-item">🥈 IIT Roorkee Cognizance - 2nd Prize</div>
+                                    <div class="stream-item">🏆 Sinhgad Techtonic - 9 Prizes</div>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                        
+                        <!-- Holographic Effects -->
+                        <div class="hologram-effects">
+                            <div class="scan-line-animated"></div>
+                            <div class="glitch-overlay"></div>
+                            <div class="particle-field">
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
