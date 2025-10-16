@@ -48,7 +48,7 @@ We are a collective of engineers, innovators, and creators who thrive on solving
 
 ## 📬 Connect With Us
 
-- 📧 teamrobotics@skncoe.edu.in  
+- 📧 roboticsfiles@gmail.com
 - 🌐 [GitHub Repository](https://github.com/TRSKNCOE-Coding-Crew/Team-Robotics-SKNCOE)  
 - 📸 [Instagram](https://www.instagram.com/skncoerobotics/?hl=en)  
 - 💼 [LinkedIn](https://www.linkedin.com/school/trskncoe/posts/?feedView=all)  
