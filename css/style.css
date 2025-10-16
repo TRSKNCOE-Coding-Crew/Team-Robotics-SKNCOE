@@ -29,6 +29,8 @@ html {
     scroll-behavior: smooth;
 }
 
+/* test commit to verify Git change */
+
 body {
     font-family: var(--body-font);
     background: var(--dark-bg);
