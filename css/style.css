@@ -1,0 +1,311 @@
+:root {
+    --primary-color: #ff8c00; /* Dark Orange */
+    --secondary-color: #ffa500; /* Orange */
+    --accent-color: #ffd700; /* Gold */
+    --dark-bg: #000000; /* Black */
+    --light-bg: #1c1c1c;
+    --text-color: #ffffff; /* White */
+    --header-font: 'Orbitron', sans-serif;
+    --body-font: 'Exo', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+h1, h2, h3 {
+    font-family: var(--header-font);
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Header */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 1.5rem 5%;
+    background: rgba(13, 13, 26, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--header-font);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 0 15px var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px var(--secondary-color);
+}
+
+/* About Section */
+.about-section {
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--light-bg);
+    padding: 2rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
+}
+
+.card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px var(--secondary-color);
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+.projects-section h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-tile {
+    background: var(--light-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-tile:hover {
+    transform: scale(1.05);
+}
+
+.project-tile img {
+    width: 100%;
+    display: block;
+}
+
+.project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.project-tile:hover .project-info {
+    transform: translateY(0);
+}
+
+.project-info h3 {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    font-family: var(--body-font);
+    font-size: 1rem;
+}
+
+.input-group label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: rgba(224, 224, 224, 0.7);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label {
+    top: -0.75rem;
+    left: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    background: var(--dark-bg);
+    padding: 0 0.5rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    font-family: var(--header-font);
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    text-shadow: 0 0 10px var(--secondary-color);
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    color: var(--dark-bg);
+    box-shadow: 0 0 20px var(--secondary-color);
+}
+
+/* Footer */
+footer {
+    padding: 3rem 5%;
+    text-align: center;
+    border-top: 1px solid rgba(255, 140, 0, 0.2);
+    margin-top: 4rem;
+}
+
+.social-icons {
+    margin-bottom: 1rem;
+}
+
+.social-icons a {
+    font-family: var(--header-font);
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2) rotate(10deg);
+    color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    nav ul {
+        display: none; /* Simple responsive solution, can be improved with a burger menu */
+    }
+}

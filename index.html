@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Robotics SKNCOE - Futuristic Robotics Team</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <header>
+        <nav>
+            <div class="logo">TRC</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>TEAM ROBOTICS SKNCOE</h1>
+                <p>Building the Future, One Robot at a Time</p>
+            </div>
+            <div id="robot-animation"></div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>About The Team</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <h3>Our Mission</h3>
+                    <p>To innovate and push the boundaries of robotics through collaboration, learning, and competition.</p>
+                </div>
+                <div class="card">
+                    <h3>Our Vision</h3>
+                    <p>To be a leading collegiate robotics team, recognized for our technical excellence and creative solutions.</p>
+                </div>
+                <div class="card">
+                    <h3>Our Team</h3>
+                    <p>A passionate group of students from various engineering disciplines dedicated to robotics.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <h2>Our Projects</h2>
+            <div class="projects-grid">
+                <div class="project-tile">
+                    <img src="https://via.placeholder.com/400x300/1a1a2e/00ffff?text=Project+Alpha" alt="Project Alpha">
+                    <div class="project-info">
+                        <h3>Project Alpha</h3>
+                        <p>An autonomous exploration robot with advanced sensor fusion.</p>
+                    </div>
+                </div>
+                <div class="project-tile">
+                    <img src="https://via.placeholder.com/400x300/1a1a2e/00ff00?text=Project+Beta" alt="Project Beta">
+                    <div class="project-info">
+                        <h3>Project Beta</h3>
+                        <p>A humanoid robot designed for search and rescue operations.</p>
+                    </div>
+                </div>
+                <div class="project-tile">
+                    <img src="https://via.placeholder.com/400x300/1a1a2e/ff00ff?text=Project+Gamma" alt="Project Gamma">
+                    <div class="project-info">
+                        <h3>Project Gamma</h3>
+                        <p>A swarm of miniature drones for environmental monitoring.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Get In Touch</h2>
+            <form class="contact-form">
+                <div class="input-group">
+                    <input type="text" id="name" name="name" required>
+                    <label for="name">Your Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Your Email</label>
+                </div>
+                <div class="input-group">
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <label for="message">Your Message</label>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#">FB</a>
+            <a href="#">TW</a>
+            <a href="#">IG</a>
+            <a href="#">GH</a>
+        </div>
+        <p>&copy; 2025 Team Robotics SKNCOE. All Rights Reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
