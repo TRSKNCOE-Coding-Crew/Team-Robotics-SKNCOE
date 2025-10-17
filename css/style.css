@@ -1044,7 +1044,7 @@ nav {
     justify-content: center;
 }
 
-.gear-icon, .circuit-icon, .wrench-icon, .social-icon, .doc-icon, .outreach-icon {
+.gear-icon, .circuit-icon, .wrench-icon, .social-icon, .doc-icon, .sponsorship-icon, .audit-icon, .lab-icon {
     width: 60px;
     height: 60px;
     background: var(--gradient-primary);
@@ -1897,6 +1897,9 @@ nav {
     padding: 1rem;
     opacity: 0;
     transform: translateY(20px) scale(0.8);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .tech-item:hover {
@@ -1931,6 +1934,7 @@ nav {
 .tech-item:hover span {
     color: var(--primary-color);
 }
+
 
 /* FAQ Section */
 .faq-section {
@@ -2058,20 +2062,151 @@ nav {
 }
 
 .member img {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.3);
+    flex-shrink: 0;
 }
 
 .member h4 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--primary-color);
+    margin: 0 0 0.5rem 0;
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+.member:hover h4 {
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(255, 170, 0, 0.8);
+    transform: translateX(5px);
 }
 
 .member p {
     color: var(--text-muted);
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.member-info {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(255, 102, 0, 0.15) 100%);
+    padding: 1.2rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid rgba(255, 102, 0, 0.4);
+    backdrop-filter: blur(15px);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.6),
+        0 0 25px rgba(255, 102, 0, 0.3);
+    z-index: 15;
+}
+
+.member-info p {
+    margin: 0.3rem 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.member-info p:first-child {
+    color: var(--accent-color);
+    font-size: 1rem;
+    text-shadow: 0 0 10px rgba(255, 170, 0, 0.8);
+    border-bottom: 1px solid rgba(255, 102, 0, 0.3);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+}
+
+.member-info p:last-child {
+    color: var(--text-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    word-break: break-all;
+    text-transform: none;
+}
+
+.member-info::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(255, 102, 0, 0.3);
+}
+
+.member:hover .member-info {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    bottom: -10px;
+}
+
+/* Enhanced member container styling */
+.member {
+    position: relative;
+    overflow: visible;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 120px;
+}
+
+.member::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    border-radius: 20px 20px 0 0;
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.member:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--accent-color);
+    box-shadow: 
+        0 20px 40px rgba(255, 102, 0, 0.2),
+        0 0 30px rgba(255, 102, 0, 0.3),
+        inset 0 0 20px rgba(255, 102, 0, 0.05);
+    background: rgba(255, 102, 0, 0.08);
+}
+
+.member:hover::before {
+    transform: scaleX(1);
+}
+
+.member:hover img {
+    transform: scale(1.1) rotateY(10deg);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
 }
 
 .team-card-link {
