@@ -1995,6 +1995,101 @@ nav {
     transform: rotate(180deg);
 }
 
+/* Team Modals */
+.team-modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(255, 102, 0, 0.3);
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.member-category h3 {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.member img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.member h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.member p {
+    color: var(--text-muted);
+}
+
+.team-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 2rem;
+}
+
+.team-page-section {
+    padding: 6rem 5%;
+}
+
+.team-members-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 /* Footer */
 footer {
     padding: 2.5rem 5%; /* Adjusted padding */
