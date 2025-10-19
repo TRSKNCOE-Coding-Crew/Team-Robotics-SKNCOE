@@ -157,7 +157,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for scroll animations
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.card, .team-card, .achievement-card, .gallery-item, .project-tile');
+    const animateElements = document.querySelectorAll('.card, .team-card, .achievement-card, .gallery-item, .project-tile , .robocon-grid img, .robocon-year');
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
@@ -165,6 +165,23 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+});
+
+//---------------------------------------------------------------------
+// Robocon Lightbox functionality
+const roboconImages = document.querySelectorAll('.robocon-grid img');
+
+roboconImages.forEach(img => {
+  img.addEventListener('click', () => {
+    const title = img.alt;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxTitle.textContent = title;
+    lightboxDesc.textContent = "Captured moment from " + title;
+
+    lightbox.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  });
 });
 
 // Gallery functionality
