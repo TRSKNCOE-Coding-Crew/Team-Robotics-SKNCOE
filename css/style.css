@@ -250,19 +250,25 @@ nav {
 .nav-menu {
     list-style: none;
     display: flex;
-    gap: 1.5rem; /* Adjusted gap */
+    gap: 1rem; /* Reduced from 1.5rem */
     align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .nav-link {
     position: relative;
-    font-weight: 500; /* Slightly lighter font weight */
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1.2px; /* Adjusted letter spacing */
-    padding: 0.4rem 0.8rem; /* Adjusted padding */
-    border-radius: 5px; /* More subtle border radius */
+    letter-spacing: 1px; /* Reduced from 1.2px */
+    padding: 0.4rem 0.6rem; /* Reduced from 0.4rem 0.8rem */
+    border-radius: 5px;
     transition: all 0.3s ease;
-    color: var(--text-color); /* Ensure text color is consistent */
+    color: var(--text-color);
 }
 
 .nav-link::before {
@@ -1998,7 +2004,6 @@ nav {
 .faq-item.active .faq-arrow {
     transform: rotate(180deg);
 }
-
 /* Team Modals */
 .team-modal {
     display: none;
@@ -2456,4 +2461,35 @@ footer p {
     .card {
         padding: 1.5rem;
     }
+}
+/* Leadership Section */
+.leadership-card {
+    background: var(--glass-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 0, 255, 0.2);
+    backdrop-filter: blur(20px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.leader-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+.leader-description {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.leadership-subheader {
+    margin-top: 4rem;
 }
