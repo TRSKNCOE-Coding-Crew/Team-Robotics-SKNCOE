@@ -1552,6 +1552,10 @@ nav {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }
 }
+.achievement-card .achievement-icon1 img {
+    display: block;
+    margin: 0 auto;
+}
 
 .achievement-card h4 {
     font-size: 1.3rem;
