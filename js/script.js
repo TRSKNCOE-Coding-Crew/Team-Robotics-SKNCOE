@@ -167,6 +167,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//---------------------------------------------------------------------
+// ✅ Robocon Lightbox functionality (Fixed)
+document.addEventListener('DOMContentLoaded', () => {
+  const roboconImages = document.querySelectorAll('.robocon-grid img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+
+  roboconImages.forEach(img => {
+    img.addEventListener('click', () => {
+      const title = img.alt || "Robocon Moment";
+      lightboxImg.src = img.src;
+      lightboxImg.alt = title;
+      lightboxTitle.textContent = title;
+      lightboxDesc.textContent = "Captured moment from " + title;
+
+      lightbox.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+});
 
 
 // Gallery functionality
@@ -177,24 +199,7 @@ const lightboxTitle = document.getElementById('lightbox-title');
 const lightboxDesc = document.getElementById('lightbox-desc');
 const lightboxClose = document.querySelector('.lightbox-close');
 
-//---------------------------------------------------------------------
-// Robocon Lightbox functionality
-document.addEventListener('DOMContentLoaded', () => {
-  const roboconImages = document.querySelectorAll('.robocon-grid img');
-  
-  roboconImages.forEach(img => {
-    img.addEventListener('click', () => {
-      const title = img.alt;
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightboxTitle.textContent = title;
-      lightboxDesc.textContent = "Captured moment from " + title;
-      
-      lightbox.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    });
-  });
-});
+
 
 // Gallery filter functionality
 const filterButtons = document.querySelectorAll('.filter-btn');
