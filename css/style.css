@@ -2246,7 +2246,7 @@ footer {
     gap: 1em;
 }
 
-.Link__instagram, .Link__github, .Link__linkedin, .Link__discord, .Link__whatsapp {
+.Link__instagram, .Link__github, .Link__linkedin, .Link__discord, .Link__whatsapp, .Link__youtube {
   width: 50px;
   height: 50px;
   display: flex;
@@ -2311,6 +2311,16 @@ footer {
 }
 
 .Link__whatsapp:hover .whatsapp {
+  fill: white;
+}
+
+.Link__youtube:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: var(--primary-color);
+}
+
+.Link__youtube:hover .youtube {
   fill: white;
 }
 
