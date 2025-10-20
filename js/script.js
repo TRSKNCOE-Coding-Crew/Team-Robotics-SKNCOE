@@ -167,6 +167,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+
+// Gallery functionality
+const galleryItems = document.querySelectorAll('.gallery-item');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxTitle = document.getElementById('lightbox-title');
+const lightboxDesc = document.getElementById('lightbox-desc');
+const lightboxClose = document.querySelector('.lightbox-close');
+
 //---------------------------------------------------------------------
 // Robocon Lightbox functionality
 const roboconImages = document.querySelectorAll('.robocon-grid img');
@@ -183,14 +193,6 @@ roboconImages.forEach(img => {
     document.body.style.overflow = 'hidden';
   });
 });
-
-// Gallery functionality
-const galleryItems = document.querySelectorAll('.gallery-item');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxTitle = document.getElementById('lightbox-title');
-const lightboxDesc = document.getElementById('lightbox-desc');
-const lightboxClose = document.querySelector('.lightbox-close');
 
 // Gallery filter functionality
 const filterButtons = document.querySelectorAll('.filter-btn');
