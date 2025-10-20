@@ -179,18 +179,20 @@ const lightboxClose = document.querySelector('.lightbox-close');
 
 //---------------------------------------------------------------------
 // Robocon Lightbox functionality
-const roboconImages = document.querySelectorAll('.robocon-grid img');
-
-roboconImages.forEach(img => {
-  img.addEventListener('click', () => {
-    const title = img.alt;
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightboxTitle.textContent = title;
-    lightboxDesc.textContent = "Captured moment from " + title;
-
-    lightbox.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+document.addEventListener('DOMContentLoaded', () => {
+  const roboconImages = document.querySelectorAll('.robocon-grid img');
+  
+  roboconImages.forEach(img => {
+    img.addEventListener('click', () => {
+      const title = img.alt;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxTitle.textContent = title;
+      lightboxDesc.textContent = "Captured moment from " + title;
+      
+      lightbox.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    });
   });
 });
 
