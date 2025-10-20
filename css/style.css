@@ -254,15 +254,21 @@ nav {
     align-items: center;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 .nav-link {
     position: relative;
-    font-weight: 500; /* Slightly lighter font weight */
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1.2px; /* Adjusted letter spacing */
-    padding: 0.4rem 0.8rem; /* Adjusted padding */
-    border-radius: 5px; /* More subtle border radius */
+    letter-spacing: 1px; /* Reduced from 1.2px */
+    padding: 0.4rem 0.6rem; /* Reduced from 0.4rem 0.8rem */
+    border-radius: 5px;
     transition: all 0.3s ease;
-    color: var(--text-color); /* Ensure text color is consistent */
+    color: var(--text-color);
 }
 
 .nav-link::before {
@@ -1998,7 +2004,6 @@ nav {
 .faq-item.active .faq-arrow {
     transform: rotate(180deg);
 }
-
 /* Team Modals */
 .team-modal {
     display: none;
@@ -2241,7 +2246,7 @@ footer {
     gap: 1em;
 }
 
-.Link__instagram, .Link__github, .Link__linkedin, .Link__discord, .Link__whatsapp {
+.Link__instagram, .Link__github, .Link__linkedin, .Link__discord, .Link__whatsapp, .Link__youtube {
   width: 50px;
   height: 50px;
   display: flex;
@@ -2306,6 +2311,16 @@ footer {
 }
 
 .Link__whatsapp:hover .whatsapp {
+  fill: white;
+}
+
+.Link__youtube:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: var(--primary-color);
+}
+
+.Link__youtube:hover .youtube {
   fill: white;
 }
 
