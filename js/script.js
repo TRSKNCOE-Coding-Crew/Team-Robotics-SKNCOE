@@ -157,7 +157,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for scroll animations
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.card, .team-card, .achievement-card, .gallery-item, .project-tile');
+    const animateElements = document.querySelectorAll('.card, .team-card, .achievement-card, .gallery-item, .project-tile, .robocon-grid img, .robocon-year');
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
@@ -167,6 +167,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//---------------------------------------------------------------------
+// ✅ Robocon Lightbox functionality (Fixed)
+document.addEventListener('DOMContentLoaded', () => {
+  const roboconImages = document.querySelectorAll('.robocon-grid img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+
+  roboconImages.forEach(img => {
+    img.addEventListener('click', () => {
+      const title = img.alt || "Robocon Moment";
+      lightboxImg.src = img.src;
+      lightboxImg.alt = title;
+      lightboxTitle.textContent = title;
+      lightboxDesc.textContent = "Captured moment from " + title;
+
+      lightbox.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+});
+
+
 // Gallery functionality
 const galleryItems = document.querySelectorAll('.gallery-item');
 const lightbox = document.getElementById('lightbox');
@@ -174,6 +198,8 @@ const lightboxImg = document.getElementById('lightbox-img');
 const lightboxTitle = document.getElementById('lightbox-title');
 const lightboxDesc = document.getElementById('lightbox-desc');
 const lightboxClose = document.querySelector('.lightbox-close');
+
+
 
 // Gallery filter functionality
 const filterButtons = document.querySelectorAll('.filter-btn');
