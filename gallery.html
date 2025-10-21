@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - Team Robotics SKNCOE</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="images/team-logo.png" type="image/png">
     <style>
         body {
@@ -13,7 +15,9 @@
             color: var(--text-color);
             overflow-x: hidden;
         }
-        #particle-canvas, #mouse-trail-canvas {
+
+        #particle-canvas,
+        #mouse-trail-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -21,6 +25,7 @@
             height: 100%;
             z-index: -1;
         }
+
         #dynamic-background {
             position: fixed;
             top: 0;
@@ -30,9 +35,11 @@
             z-index: -2;
             background: radial-gradient(circle at 50% 50%, rgba(255, 102, 0, 0.05) 0%, transparent 70%);
         }
+
         .team-page-section {
             padding: 8rem 5% 2rem;
         }
+
         .back-to-home {
             display: inline-block;
             margin-top: 2rem;
@@ -44,11 +51,13 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
+
         .back-to-home:hover {
             background: var(--accent-color);
             color: var(--text-color);
             box-shadow: 0 0 20px var(--accent-color);
         }
+
         .full-gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -57,6 +66,7 @@
         }
     </style>
 </head>
+
 <body>
     <canvas id="particle-canvas"></canvas>
     <canvas id="mouse-trail-canvas"></canvas>
@@ -73,11 +83,13 @@
                 <ul class="nav-menu">
                     <li><a href="index.html#about" class="nav-link">About</a></li>
                     <li><a href="index.html#teams" class="nav-link">Teams</a></li>
+                    <li><a href="index.html#leadership" class="nav-link">Leadership</a></li>
                     <li><a href="index.html#achievements" class="nav-link">Achievements</a></li>
                     <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
-                    <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                    <li><a href="index.html#robocon" class="nav-link">Robocon</a></li>
                     <li><a href="index.html#tech-stack" class="nav-link">Tech Stack</a></li>
                     <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -92,47 +104,130 @@
         <section class="team-page-section">
             <div class="section-header">
                 <h2>Image Gallery</h2>
-                <p>A collection of moments from our journey in robotics, from intense competitions to collaborative workshops.</p>
+                <p>A collection of moments from our journey in robotics, from intense competitions to collaborative
+                    workshops.</p>
                 <a href="index.html" class="back-to-home">Back to Home</a>
             </div>
             <div class="full-gallery-grid">
                 <div class="gallery-item" data-category="workshops">
-                    <img src="images/gallery-1.jpg" alt="Robotics Seminar">
+                    <img src="images/gallery/gallery-1.jpg" alt="Robotics Seminar">
                     <div class="gallery-overlay">
                         <h4>Robotics Seminar</h4>
                         <p>Hosting a seminar on robotics as a career choice for 1st Year students.</p>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="team">
-                    <img src="images/gallery-2.jpg" alt="Team Photograph">
+                    <img src="images/gallery/gallery-2.jpg" alt="Team Photograph">
                     <div class="gallery-overlay">
                         <h4>Team Photograph</h4>
                         <p>Team Picture for A.Y 2025-2026</p>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="competitions">
-                    <img src="images/gallery-3.jpg" alt="Robotex 2024">
+                    <img src="images/gallery/gallery-3.jpg" alt="Robotex 2024">
                     <div class="gallery-overlay">
                         <h4>Robotex 2024</h4>
                         <p>Our team at the Robotex 2024 competition winning the overall championship.</p>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="competitions">
-                    <img src="images/gallery-5.jpg" alt="Team Photograph at IIT Roorkee">
+                    <img src="images/gallery/gallery-4.jpg" alt="Dussera Celebration">
+                    <div class="gallery-overlay">
+                        <h4>Dussera Celebration</h4>
+                        <p>Celebrating the Dussera festival at our robotics lab.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="competitions">
+                    <img src="images/gallery/gallery-5.jpg" alt="Team Photograph at IIT Roorkee">
                     <div class="gallery-overlay">
                         <h4>Team Photograph at IIT Roorkee</h4>
                         <p>Celebrating our achievement at IIT Roorkee</p>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="competitions">
-                    <img src="images/gallery-6.jpg" alt="Robotex 2025">
+                    <img src="images/gallery/gallery-6.jpg" alt="Robotex 2025">
                     <div class="gallery-overlay">
                         <h4>Robotex 2025</h4>
                         <p>Our team at the Robotex 2025 competition after winning the championship.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="competitions">
+                    <img src="images/gallery/gallery-7.jpg" alt="Meeting Navale sir">
+                    <div class="gallery-overlay">
+                        <h4>Meet with M.N. Navale Sir</h4>
+                        <p>Our team with M.N. Navale Sir after the Mindspark 2025 competition.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="workshops">
+                    <img src="images/gallery/gallery-8.jpg" alt="Mini-Sumo Teams">
+                    <div class="gallery-overlay">
+                        <h4>Mini-Sumo Teams</h4>
+                        <p>Our Mini-Sumo teams with their autonomous robots during Robotex 2025.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="team">
+                    <img src="images/gallery/gallery-10.jpg" alt="Sinhgad Techtonic 2025">
+                    <div class="gallery-overlay">
+                        <h4>Sinhgad Techtonic 2025</h4>
+                        <p>Team photo after our 9 event victory in robotics projects at Techtonic 2025.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="competitions">
+                    <img src="images/gallery/gallery-11.jpg" alt="Victory at Cummins">
+                    <div class="gallery-overlay">
+                        <h4>Victory at Cummins</h4>
+                        <p>Team members receive their prize at the Cummins competition.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="workshops">
+                    <img src="images/gallery/gallery-12.jpg" alt="Technical Workshop">
+                    <div class="gallery-overlay">
+                        <h4>Victory at BharatiYugam</h4>
+                        <p>Team members celebrating their victory at the BharatiYugam competition at Bharati Vidyapeeth.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="team">
+                    <img src="images/gallery/gallery-13.jpg" alt="Team Alumni meet at Dussera">
+                    <div class="gallery-overlay">
+                        <h4>Team Alumni Meet</h4>
+                        <p>Team bonding session between alumni and current members with collaborative activities to
+                            strengthen team dynamics at Dussera.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="competitions">
+                    <img src="images/gallery/gallery-14.jpg" alt="Women Power">
+                    <div class="gallery-overlay">
+                        <h4>Women Power</h4>
+                        <p>Celebrating the women in our team and their achievements and contributions of women in
+                            robotics.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="workshops">
+                    <img src="images/gallery/gallery-15.jpg" alt="Team at Robo Race event">
+                    <div class="gallery-overlay">
+                        <h4>Robo Race Event</h4>
+                        <p>Senior team members mentoring junior students for robo race.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="team">
+                    <img src="images/gallery/gallery-16.jpg" alt="Victory at COEP Mindspark">
+                    <div class="gallery-overlay">
+                        <h4>COEP Mindspark</h4>
+                        <p>Team members celebrating together their victory at COEP Mindspark.</p>
                     </div>
                 </div>
             </div>
@@ -153,4 +248,5 @@
 
     <script src="js/script.js"></script>
 </body>
+
 </html>
