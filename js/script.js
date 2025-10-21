@@ -52,7 +52,8 @@ class Particle {
 
 function initParticles() {
     particles = [];
-    for (let i = 0; i < particleCount; i++) {
+    const count = getParticleCount();
+    for (let i = 0; i < count; i++) {
         const size = Math.random() * 3 + 1;
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height;
@@ -609,6 +610,45 @@ style.textContent = `
         font-size: 0.8rem !important;
         color: var(--secondary-color) !important;
     }
+    
+    /* Enhanced loading animations */
+    @keyframes pulseGlow {
+        0%, 100% { 
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+            transform: scale(1);
+        }
+        50% { 
+            box-shadow: 0 0 40px rgba(255, 102, 0, 0.6);
+            transform: scale(1.05);
+        }
+    }
+    
+    .team-card:hover {
+        animation: pulseGlow 2s ease-in-out infinite;
+    }
+    
+    /* Smooth scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--gradient-secondary);
+    }
 `;
 document.head.appendChild(style);
 
@@ -626,22 +666,153 @@ faqItems.forEach(item => {
     });
 });
 
-// Initialize everything
-initParticles();
-animateParticles();
+// Performance optimization - Reduce particle count on mobile
+function getParticleCount() {
+    if (window.innerWidth < 768) return 30;
+    if (window.innerWidth < 1200) return 50;
+    return 75;
+}
+
+// Update particle count based on screen size
+window.addEventListener('resize', () => {
+    const newCount = getParticleCount();
+    if (particles.length !== newCount) {
+        initParticles();
+    }
+});
+
+// Add scroll-triggered animations for better performance
+const createScrollObserver = (callback, options = {}) => {
+    const defaultOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    return new IntersectionObserver(callback, { ...defaultOptions, ...options });
+};
+
+// Enhanced scroll animations
+const scrollAnimationObserver = createScrollObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            scrollAnimationObserver.unobserve(entry.target);
+        }
+    });
+});
+
+// Add CSS classes for scroll animations
+const scrollAnimationStyle = document.createElement('style');
+scrollAnimationStyle.textContent = `
+    .scroll-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .scroll-animate.animate-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .scroll-animate-left {
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .scroll-animate-left.animate-in {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .scroll-animate-right {
+        opacity: 0;
+        transform: translateX(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .scroll-animate-right.animate-in {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
+document.head.appendChild(scrollAnimationStyle);
+
+// Smooth scroll with offset for fixed header
+function smoothScrollTo(target) {
+    const element = document.querySelector(target);
+    if (element) {
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const elementPosition = element.offsetTop - headerHeight - 20;
+        
+        window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Enhanced navigation with smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = this.getAttribute('href');
+        smoothScrollTo(target);
+    });
+});
+
+// Simple image error handling without opacity manipulation
+document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('error', () => {
+            console.warn('Failed to load image:', img.src);
+            // You could add a placeholder image here if needed
+        });
+    });
+});
+
+// Initialize everything only after DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    // Don't initialize particles here - wait for window load
+    console.log('DOM loaded, waiting for full page load...');
+});
 
 // Loading screen functionality
 const loadingScreen = document.getElementById('loading-screen');
 
-// Show loading screen initially
-document.body.style.opacity = '0';
-
 // Hide loading screen after everything loads
-document.addEventListener('DOMContentLoaded', () => {
-    loadingScreen.style.opacity = '0';
+window.addEventListener('load', () => {
+    // Wait for a minimum time to show the loading animation
     setTimeout(() => {
-        loadingScreen.style.display = 'none';
-        document.body.style.opacity = '1';
-        document.body.style.transition = 'opacity 0.5s ease';
-    }, 500);
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.visibility = 'hidden';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 800);
+        }
+        
+        // Initialize animations after loading
+        initializeAnimations();
+    }, 1200); // Show loading for 1.2 seconds minimum
 });
+
+// Initialize animations after page load
+function initializeAnimations() {
+    // Initialize particle system
+    initParticles();
+    animateParticles();
+    
+    // Trigger hero animations
+    const heroElements = document.querySelectorAll('.hero-text > *');
+    heroElements.forEach((el, index) => {
+        if (el) {
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, index * 200);
+        }
+    });
+}
