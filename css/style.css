@@ -4005,3 +4005,8 @@ footer p {
         padding: 1.5rem;
     }
 }
+/* Force Robocon section to stay visible */
+.robocon-year {
+    opacity: 1 !important;
+    transform: none !important;
+}
