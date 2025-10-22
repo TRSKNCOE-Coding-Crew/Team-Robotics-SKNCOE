@@ -1002,3 +1002,356 @@ function initializeAnimations() {
         }
     });
 }
+
+// Secret Easter Egg - TRSKNCOE Logo Click Counter
+let logoClickCount = 0;
+let logoClickTimer = null;
+const REQUIRED_CLICKS = 7; // Number of clicks needed to activate
+const CLICK_TIMEOUT = 3000; // Reset counter after 3 seconds of no clicks
+
+function initializeSecretEasterEgg() {
+    const secretLogo = document.getElementById('secret-logo');
+    
+    if (secretLogo) {
+        secretLogo.addEventListener('click', function(e) {
+            e.preventDefault();
+            logoClickCount++;
+            
+            // Clear existing timer
+            if (logoClickTimer) {
+                clearTimeout(logoClickTimer);
+            }
+            
+            // Add visual feedback for each click
+            this.style.transform = 'scale(1.1) rotate(5deg)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            }, 150);
+            
+            // Add click indicator
+            showClickIndicator(logoClickCount);
+            
+            // Check if enough clicks
+            if (logoClickCount >= REQUIRED_CLICKS) {
+                activateSecretPage();
+                logoClickCount = 0; // Reset counter
+                return;
+            }
+            
+            // Set timer to reset counter
+            logoClickTimer = setTimeout(() => {
+                logoClickCount = 0;
+                hideClickIndicator();
+            }, CLICK_TIMEOUT);
+        });
+    }
+}
+
+function showClickIndicator(count) {
+    // Remove existing indicator
+    const existingIndicator = document.querySelector('.click-indicator');
+    if (existingIndicator) {
+        existingIndicator.remove();
+    }
+    
+    // Create new indicator
+    const indicator = document.createElement('div');
+    indicator.className = 'click-indicator';
+    indicator.innerHTML = `
+        <div class="click-counter">${count}/${REQUIRED_CLICKS}</div>
+        <div class="click-hint">${count === 1 ? 'Keep clicking the logo...' : count < REQUIRED_CLICKS ? 'Almost there!' : 'Activating...'}</div>
+    `;
+    
+    // Add styles
+    indicator.style.cssText = `
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 212, 255, 0.9);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: bold;
+        z-index: 10000;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        backdrop-filter: blur(10px);
+        animation: slideDown 0.3s ease-out;
+    `;
+    
+    // Add animation keyframes if not already added
+    if (!document.querySelector('#click-indicator-styles')) {
+        const style = document.createElement('style');
+        style.id = 'click-indicator-styles';
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+                to { transform: translateX(-50%) translateY(0); opacity: 1; }
+            }
+            .click-counter {
+                font-size: 16px;
+                margin-bottom: 2px;
+            }
+            .click-hint {
+                font-size: 12px;
+                opacity: 0.8;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(indicator);
+}
+
+function hideClickIndicator() {
+    const indicator = document.querySelector('.click-indicator');
+    if (indicator) {
+        indicator.style.animation = 'slideUp 0.3s ease-out forwards';
+        setTimeout(() => indicator.remove(), 300);
+    }
+}
+
+function activateSecretPage() {
+    // Hide click indicator
+    hideClickIndicator();
+    
+    // Create activation effect
+    const activationEffect = document.createElement('div');
+    activationEffect.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: activationPulse 1.5s ease-out;
+    `;
+    
+    activationEffect.innerHTML = `
+        <div style="
+            text-align: center;
+            color: #00d4ff;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px #00d4ff;
+            animation: glow 0.5s ease-in-out infinite alternate;
+        ">
+            🚀 SECRET ACTIVATED! 🚀<br>
+            <div style="font-size: 1rem; margin-top: 10px; opacity: 0.8;">
+                Redirecting to developers page...
+            </div>
+        </div>
+    `;
+    
+    // Add activation animation styles
+    if (!document.querySelector('#activation-styles')) {
+        const style = document.createElement('style');
+        style.id = 'activation-styles';
+        style.textContent = `
+            @keyframes activationPulse {
+                0% { opacity: 0; transform: scale(0.8); }
+                50% { opacity: 1; transform: scale(1.1); }
+                100% { opacity: 1; transform: scale(1); }
+            }
+            @keyframes glow {
+                from { text-shadow: 0 0 20px #00d4ff; }
+                to { text-shadow: 0 0 30px #00d4ff, 0 0 40px #00d4ff; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(activationEffect);
+    
+    // Redirect after animation
+    setTimeout(() => {
+        window.location.href = 'developers.html';
+    }, 2000);
+}
+
+// Initialize the easter egg when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSecretEasterEgg();
+});// Secret
+ Easter Egg - TRSKNCOE Logo Click Counter
+let logoClickCount = 0;
+let logoClickTimer = null;
+const REQUIRED_CLICKS = 7; // Number of clicks needed to activate
+const CLICK_TIMEOUT = 3000; // Reset counter after 3 seconds of no clicks
+
+function initializeSecretEasterEgg() {
+    const secretLogo = document.getElementById('secret-logo');
+    
+    if (secretLogo) {
+        secretLogo.addEventListener('click', function(e) {
+            e.preventDefault();
+            logoClickCount++;
+            
+            // Clear existing timer
+            if (logoClickTimer) {
+                clearTimeout(logoClickTimer);
+            }
+            
+            // Add visual feedback for each click
+            this.style.transform = 'scale(1.1) rotate(5deg)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            }, 150);
+            
+            // Add click indicator
+            showClickIndicator(logoClickCount);
+            
+            // Check if enough clicks
+            if (logoClickCount >= REQUIRED_CLICKS) {
+                activateSecretPage();
+                logoClickCount = 0; // Reset counter
+                return;
+            }
+            
+            // Set timer to reset counter
+            logoClickTimer = setTimeout(() => {
+                logoClickCount = 0;
+                hideClickIndicator();
+            }, CLICK_TIMEOUT);
+        });
+    }
+}
+
+function showClickIndicator(count) {
+    // Remove existing indicator
+    const existingIndicator = document.querySelector('.click-indicator');
+    if (existingIndicator) {
+        existingIndicator.remove();
+    }
+    
+    // Create new indicator
+    const indicator = document.createElement('div');
+    indicator.className = 'click-indicator';
+    indicator.innerHTML = `
+        <div class="click-counter">${count}/${REQUIRED_CLICKS}</div>
+        <div class="click-hint">${count === 1 ? 'Keep clicking the logo...' : count < REQUIRED_CLICKS ? 'Almost there!' : 'Activating...'}</div>
+    `;
+    
+    // Add styles
+    indicator.style.cssText = `
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 212, 255, 0.9);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: bold;
+        z-index: 10000;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        backdrop-filter: blur(10px);
+        animation: slideDown 0.3s ease-out;
+    `;
+    
+    // Add animation keyframes if not already added
+    if (!document.querySelector('#click-indicator-styles')) {
+        const style = document.createElement('style');
+        style.id = 'click-indicator-styles';
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+                to { transform: translateX(-50%) translateY(0); opacity: 1; }
+            }
+            .click-counter {
+                font-size: 16px;
+                margin-bottom: 2px;
+            }
+            .click-hint {
+                font-size: 12px;
+                opacity: 0.8;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(indicator);
+}
+
+function hideClickIndicator() {
+    const indicator = document.querySelector('.click-indicator');
+    if (indicator) {
+        indicator.style.animation = 'slideUp 0.3s ease-out forwards';
+        setTimeout(() => indicator.remove(), 300);
+    }
+}
+
+function activateSecretPage() {
+    // Hide click indicator
+    hideClickIndicator();
+    
+    // Create activation effect
+    const activationEffect = document.createElement('div');
+    activationEffect.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: activationPulse 1.5s ease-out;
+    `;
+    
+    activationEffect.innerHTML = `
+        <div style="
+            text-align: center;
+            color: #00d4ff;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px #00d4ff;
+            animation: glow 0.5s ease-in-out infinite alternate;
+        ">
+            🚀 SECRET ACTIVATED! 🚀<br>
+            <div style="font-size: 1rem; margin-top: 10px; opacity: 0.8;">
+                Redirecting to developers page...
+            </div>
+        </div>
+    `;
+    
+    // Add activation animation styles
+    if (!document.querySelector('#activation-styles')) {
+        const style = document.createElement('style');
+        style.id = 'activation-styles';
+        style.textContent = `
+            @keyframes activationPulse {
+                0% { opacity: 0; transform: scale(0.8); }
+                50% { opacity: 1; transform: scale(1.1); }
+                100% { opacity: 1; transform: scale(1); }
+            }
+            @keyframes glow {
+                from { text-shadow: 0 0 20px #00d4ff; }
+                to { text-shadow: 0 0 30px #00d4ff, 0 0 40px #00d4ff; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(activationEffect);
+    
+    // Redirect after animation
+    setTimeout(() => {
+        window.location.href = 'developers.html';
+    }, 2000);
+}
+
+// Initialize the easter egg when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSecretEasterEgg();
+});

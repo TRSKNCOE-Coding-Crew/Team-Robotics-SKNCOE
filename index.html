@@ -32,7 +32,7 @@
 
     <header>
         <nav>
-            <div class="logo">
+            <div class="logo" id="secret-logo">
                 <img src="images/team-logo.png" alt="Team Robotics SKNCOE Logo" class="team-logo">
                 <span class="logo-text">TRSKNCOE</span>
                 <div class="logo-glow"></div>
@@ -177,7 +177,7 @@
                                         <div class="stream-item">🥇 IIT Kharagpur Kshitij - 1st Runner-up</div>
                                         <div class="stream-item">🥇 COEP Mindspark - 1st Place - Hackathon</div>
                                         <div class="stream-item">🥇 COEP Mindspark - 1st Place - Robosoccer</div>
-                                        <div class="stream-item">� COTEP Mindspark - 3rd Place - Liftoff</div>
+                                        <div class="stream-item">🥇 COEP Mindspark - 3rd Place - Takeoff</div>
                                         <div class="stream-item">🥈 IIT Roorkee Cognizance - 2nd Prize</div>
                                         <div class="stream-item">🏆 Sinhgad Techtonic - 9 Prizes</div>
                                         <div class="stream-item">🥇 IIT Bombay Techfest - 1st Place</div>
@@ -824,6 +824,8 @@
                         </div>
                     </div>
 
+
+
                     <!-- Robocon 2015 -->
                     <div class="robocon-year">
                         <h3 class="robocon-year-title">Robocon 2015</h3>
@@ -1174,7 +1176,7 @@
             <div class="quick-contact">
                 <div class="quick-contact-grid">
                     <div class="quick-item">
-                        <span class="quick-icon">🏫</span>
+                        <img src="images/sinhgad.jpg" alt="Sinhgad Institute Logo" class="quick-icon-logo">
                         <div>
                             <h4>College</h4>
                             <p>SKNCOE Pune</p>
@@ -1257,7 +1259,61 @@
         <p>&copy; 2025 Team Robotics SKNCOE. All Rights Reserved.</p>
     </footer>
 
+    <!-- Easter Egg Modal -->
+    <div id="easter-egg-modal" class="easter-egg-modal">
+        <div class="easter-egg-content">
+            <div class="easter-egg-header">
+                <h2>🤖 EASTER EGG ACTIVATED! 🤖</h2>
+                <span class="easter-egg-close">&times;</span>
+            </div>
+            <div class="easter-egg-body">
+                <div class="robot-ascii">
+                    <pre>
+    ╔══════════════════════════════════╗
+    ║        TEAM ROBOTICS SKNCOE      ║
+    ║                                  ║
+    ║           ┌─────────┐            ║
+    ║           │  ◉   ◉  │            ║
+    ║           │    ∩    │            ║
+    ║           └─────────┘            ║
+    ║              │ │ │               ║
+    ║         ┌────┴─┴─┴────┐          ║
+    ║         │  TRSKNCOE   │          ║
+    ║         │   ROBOT     │          ║
+    ║         └─────────────┘          ║
+    ║            ╱│     │╲             ║
+    ║           ╱ │     │ ╲            ║
+    ║          ╱  └─────┘  ╲           ║
+    ║         ╱             ╲          ║
+    ║        ○               ○         ║
+    ╚══════════════════════════════════╝
+                    </pre>
+                </div>
+                <div class="easter-egg-message">
+                    <p>🎉 Congratulations! You found our secret robot!</p>
+                    <p>You clicked the logo <span id="click-count">0</span> times!</p>
+                    <p>Fun Fact: Our team has built over 50 robots since 2012!</p>
+                    <div class="easter-egg-stats">
+                        <div class="easter-stat">
+                            <span class="easter-number">13</span>
+                            <span class="easter-label">Years of Innovation</span>
+                        </div>
+                        <div class="easter-stat">
+                            <span class="easter-number">100+</span>
+                            <span class="easter-label">Championships Won</span>
+                        </div>
+                        <div class="easter-stat">
+                            <span class="easter-number">∞</span>
+                            <span class="easter-label">Dreams Achieved</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
+    <script src="js/easter-egg.js"></script>
 
     <!-- Fallback to ensure loading screen disappears -->
     <script>

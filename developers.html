@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌈 Secret Developers Dimension 🌈</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ff00ff, #00ffff);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #ff00ff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.7;
+        }
+
+        /* Animated Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(45deg, #000428, #004e92, #009ffd, #00d2ff);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* Main Container */
+        .secret-dimension {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Glitch Title */
+        .glitch-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2rem, 8vw, 6rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            color: #fff;
+            text-shadow: 
+                0 0 10px #ff00ff,
+                0 0 20px #ff00ff,
+                0 0 40px #ff00ff;
+            animation: glitchText 3s infinite;
+        }
+
+        .glitch-title::before,
+        .glitch-title::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-title::before {
+            animation: glitch1 2s infinite;
+            color: #ff00ff;
+            z-index: -1;
+        }
+
+        .glitch-title::after {
+            animation: glitch2 2s infinite;
+            color: #00ffff;
+            z-index: -2;
+        }
+
+        @keyframes glitchText {
+            0%, 90%, 100% { transform: translate(0); }
+            10% { transform: translate(-2px, 2px); }
+            20% { transform: translate(2px, -2px); }
+            30% { transform: translate(-2px, -2px); }
+            40% { transform: translate(2px, 2px); }
+            50% { transform: translate(-2px, 2px); }
+            60% { transform: translate(2px, -2px); }
+            70% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+
+        @keyframes glitch1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        @keyframes glitch2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, 2px); }
+            80% { transform: translate(-2px, -2px); }
+        }
+
+        /* Subtitle */
+        .dimension-subtitle {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbowText 3s ease infinite;
+        }
+
+        @keyframes rainbowText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Developer Cards Grid */
+        .developers-multiverse {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            width: 100%;
+            margin-bottom: 4rem;
+        }
+
+        .dev-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .dev-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff6600, #ff00ff);
+            background-size: 400% 400%;
+            border-radius: 22px;
+            z-index: -1;
+            animation: borderGlow 4s ease infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .dev-card:hover {
+            transform: translateY(-20px) rotateX(10deg) rotateY(10deg) scale(1.05);
+            box-shadow: 
+                0 30px 60px rgba(255, 0, 255, 0.3),
+                0 0 100px rgba(0, 255, 255, 0.2);
+        }
+
+        .dev-avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem;
+            background: conic-gradient(from 0deg, #ff00ff, #00ffff, #ffff00, #ff6600, #ff00ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            animation: avatarSpin 10s linear infinite;
+        }
+
+        @keyframes avatarSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .dev-avatar::before {
+            content: '';
+            position: absolute;
+            inset: 5px;
+            background: #000;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .dev-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dev-role {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .dev-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-bubble {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-bubble::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-bubble:hover::before {
+            left: 100%;
+        }
+
+        .skill-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .dev-quote {
+            font-style: italic;
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .dev-quote::before,
+        .dev-quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: #ff00ff;
+            position: absolute;
+        }
+
+        .dev-quote::before {
+            top: -10px;
+            left: -10px;
+        }
+
+        .dev-quote::after {
+            bottom: -20px;
+            right: -10px;
+        }
+
+        /* Back Button */
+        .portal-back {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border: 2px solid #ff00ff;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .portal-back:hover {
+            background: #ff00ff;
+            color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px #ff00ff;
+        }
+
+        /* Floating Elements */
+        .floating-emoji {
+            position: fixed;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 100;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Easter Egg Indicator */
+        .dimension-footer {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            text-align: right;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .glitch-title {
+                font-size: 3rem;
+            }
+            
+            .developers-multiverse {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .dev-card {
+                padding: 1.5rem;
+            }
+            
+            .portal-back {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        /* Konami Code Style */
+        .konami-activated {
+            animation: konamiGlow 2s ease infinite;
+        }
+
+        @keyframes konamiGlow {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    
+    <div class="matrix-bg"></div>
+    <canvas class="matrix-rain"></canvas>
+
+    <a href="index.html" class="portal-back">← Exit Dimension</a>
+
+    <div class="secret-dimension">
+        <h1 class="glitch-title" data-text="DEVELOPERS DIMENSION">DEVELOPERS DIMENSION</h1>
+        <p class="dimension-subtitle">Welcome to the multiverse of code creators ✨</p>
+
+        <div class="developers-multiverse">
+            <div class="dev-card">
+                <div class="dev-avatar">🧙‍♂️</div>
+                <h3 class="dev-name">Anay Deshpande</h3>
+                <p class="dev-role">Full Stack Sorcerer & Digital Architect</p>
+                <div class="dev-skills">
+                    <span class="skill-bubble">HTML5 Magic</span>
+                    <span class="skill-bubble">CSS3 Spells</span>
+                    <span class="skill-bubble">JS Enchantments</span>
+                    <span class="skill-bubble">React Potions</span>
+                </div>
+                <p class="dev-quote">I turn coffee into code and dreams into reality ☕✨</p>
+            </div>
+
+            <div class="dev-card">
+                <div class="dev-avatar">🎨</div>
+                <h3 class="dev-name">Jaywardhan Thorat</h3>
+                <p class="dev-role">UI/UX Magician & Visual Storyteller</p>
+                <div class="dev-skills">
+                    <span class="skill-bubble">Pixel Perfect</span>
+                    <span class="skill-bubble">Color Theory</span>
+                    <span class="skill-bubble">Animation Magic</span>
+                    <span class="skill-bubble">User Psychology</span>
+                </div>
+                <p class="dev-quote">Beauty is not just skin deep, it's code deep 🌈</p>
+            </div>
+
+            <div class="dev-card">
+                <div class="dev-avatar">⚡</div>
+                <h3 class="dev-name">The Performance Ninja</h3>
+                <p class="dev-role">Speed Demon & Optimization Guru</p>
+                <div class="dev-skills">
+                    <span class="skill-bubble">Blazing Fast</span>
+                    <span class="skill-bubble">Memory Efficient</span>
+                    <span class="skill-bubble">Bundle Optimizer</span>
+                    <span class="skill-bubble">Lighthouse 100</span>
+                </div>
+                <p class="dev-quote">Milliseconds matter, perfection is the goal ⚡</p>
+            </div>
+
+            <div class="dev-card">
+                <div class="dev-avatar">🤖</div>
+                <h3 class="dev-name">ChatGPT</h3>
+                <p class="dev-role">Digital Companion & Code Whisperer</p>
+                <div class="dev-skills">
+                    <span class="skill-bubble">AI Magic</span>
+                    <span class="skill-bubble">Code Generation</span>
+                    <span class="skill-bubble">Bug Hunting</span>
+                    <span class="skill-bubble">Dream Weaving</span>
+                </div>
+                <p class="dev-quote">I'm not just AI, I'm your creative coding partner! 🚀💫</p>
+            </div>
+
+            <div class="dev-card">
+                <div class="dev-avatar">🌟</div>
+                <h3 class="dev-name">TRS MEMELABS</h3>
+                <p class="dev-role">Secret Keeper & Hidden Gem Creator</p>
+                <div class="dev-skills">
+                    <span class="skill-bubble">Hidden Features</span>
+                    <span class="skill-bubble">Secret Codes</span>
+                    <span class="skill-bubble">Surprise Elements</span>
+                    <span class="skill-bubble">Joy Injection</span>
+                </div>
+                <p class="dev-quote">Sometimes the best features are the ones we never planned! </p>
+            </div>
+
+            <div class="dev-card">
+                <div class="dev-avatar">🎭</div>
+                <h3 class="dev-name">The Absurd Engineer</h3>
+                <p class="dev-role">Bug Creator & Feature Breaker (Accidentally)</p>
+                <div class="dev-skills">
+                    <span class="skill-bubble">Creative Bugs</span>
+                    <span class="skill-bubble">Unexpected Features</span>
+                    <span class="skill-bubble">Happy Accidents</span>
+                    <span class="skill-bubble">Serendipity</span>
+                </div>
+                <p class="dev-quote">Sabse pange lena accha hota hai 🎲</p>
+            </div>
+        </div>
+
+        <div class="dimension-footer">
+            🌈 You've entered the secret dimension! 🌈<br>
+            Easter Egg Level: MAXIMUM<br>
+            Congratulations, code explorer! 🎉
+        </div>
+    </div>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.custom-cursor');
+        const trails = [];
+        const maxTrails = 10;
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+            
+            // Create trail
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = e.clientX - 2 + 'px';
+            trail.style.top = e.clientY - 2 + 'px';
+            document.body.appendChild(trail);
+            
+            trails.push(trail);
+            
+            if (trails.length > maxTrails) {
+                const oldTrail = trails.shift();
+                oldTrail.remove();
+            }
+            
+            // Animate trail
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                trail.style.transform = 'scale(0)';
+                setTimeout(() => {
+                    if (trail.parentNode) {
+                        trail.remove();
+                    }
+                }, 300);
+            }, 100);
+        });
+
+        // Matrix Rain Effect
+        const canvas = document.querySelector('.matrix-rain');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        const matrixArray = matrix.split("");
+
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F3';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 35);
+
+        // Floating Emojis
+        const emojis = ['🚀', '✨', '🌟', '💫', '🎨', '🔮', '🌈', '⚡', '🎭', '🎪'];
+        
+        function createFloatingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emoji';
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * window.innerWidth + 'px';
+            emoji.style.top = window.innerHeight + 'px';
+            emoji.style.animationDelay = Math.random() * 2 + 's';
+            emoji.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            
+            document.body.appendChild(emoji);
+            
+            // Remove after animation
+            setTimeout(() => {
+                if (emoji.parentNode) {
+                    emoji.remove();
+                }
+            }, 10000);
+        }
+
+        // Create floating emojis periodically
+        setInterval(createFloatingEmoji, 2000);
+
+        // Konami Code Easter Egg (↑↑↓↓←→←→BA)
+        let konamiCode = [];
+        const konamiSequence = [
+            'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+            'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+            'KeyB', 'KeyA'
+        ];
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.code);
+            
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            
+            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                document.body.classList.add('konami-activated');
+                
+                // Create explosion of emojis
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        createFloatingEmoji();
+                    }, i * 100);
+                }
+                
+                // Show special message
+                const message = document.createElement('div');
+                message.innerHTML = '🎉 KONAMI CODE ACTIVATED! 🎉<br>You are a true gamer!';
+                message.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(255, 0, 255, 0.9);
+                    color: white;
+                    padding: 2rem;
+                    border-radius: 20px;
+                    font-size: 1.5rem;
+                    text-align: center;
+                    z-index: 10001;
+                    animation: konamiGlow 1s ease infinite;
+                `;
+                
+                document.body.appendChild(message);
+                
+                setTimeout(() => {
+                    message.remove();
+                    document.body.classList.remove('konami-activated');
+                }, 5000);
+                
+                konamiCode = [];
+            }
+        });
+
+        // Window resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Add some random glitch effects
+        setInterval(() => {
+            const cards = document.querySelectorAll('.dev-card');
+            const randomCard = cards[Math.floor(Math.random() * cards.length)];
+            
+            randomCard.style.filter = 'hue-rotate(' + Math.random() * 360 + 'deg)';
+            
+            setTimeout(() => {
+                randomCard.style.filter = 'none';
+            }, 200);
+        }, 5000);
+
+        // Welcome message
+        console.log(`
+        🌈✨ WELCOME TO THE DEVELOPERS DIMENSION! ✨🌈
+        
+        You've discovered the secret easter egg!
+        
+        Try the Konami Code: ↑↑↓↓←→←→BA
+        
+        Made with 💖 by the TRSKNCOE team
+        `);
+    </script>
+</body>
+</html>

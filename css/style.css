@@ -251,6 +251,16 @@ nav {
     gap: 0.8rem;
     cursor: pointer;
     flex: 0 0 auto;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo:active {
+    transform: scale(0.98);
 }
 
 .team-logo {
@@ -272,6 +282,11 @@ nav {
     font-weight: 700;
     color: var(--primary-color);
     text-shadow: 0 0 15px var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.logo:hover .logo-text {
+    text-shadow: 0 0 25px var(--primary-color), 0 0 35px var(--primary-color);
 }
 
 .logo-glow {
@@ -3313,6 +3328,21 @@ y Section */
     flex-shrink: 0;
 }
 
+.quick-icon-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 15px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 15px rgba(255, 102, 0, 0.4));
+    transition: all 0.3s ease;
+}
+
+.quick-icon-logo:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 6px 20px rgba(255, 102, 0, 0.7));
+}
+
 .quick-item h4 {
     color: var(--primary-color);
     font-size: 1.1rem;
@@ -3322,6 +3352,185 @@ y Section */
 .quick-item p {
     color: var(--text-muted);
     font-size: 0.9rem;
+}
+
+/* Easter Egg Modal */
+.easter-egg-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    animation: easterEggFadeIn 0.5s ease-out;
+}
+
+.easter-egg-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 3px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 
+        0 0 50px rgba(255, 102, 0, 0.5),
+        inset 0 0 30px rgba(255, 102, 0, 0.1);
+    animation: easterEggBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.easter-egg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(255, 102, 0, 0.3);
+    padding-bottom: 1rem;
+}
+
+.easter-egg-header h2 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    text-shadow: 0 0 15px var(--primary-color);
+    margin: 0;
+}
+
+.easter-egg-close {
+    font-size: 2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.easter-egg-close:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.easter-egg-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.robot-ascii {
+    text-align: center;
+}
+
+.robot-ascii pre {
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    text-shadow: 0 0 10px var(--primary-color);
+    animation: robotGlow 2s ease-in-out infinite alternate;
+}
+
+.easter-egg-message {
+    text-align: center;
+}
+
+.easter-egg-message p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.easter-egg-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.easter-stat {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 102, 0, 0.1);
+    border: 1px solid rgba(255, 102, 0, 0.3);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.easter-stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3);
+}
+
+.easter-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.easter-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Easter Egg Animations */
+@keyframes easterEggFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes easterEggBounce {
+    0% { 
+        transform: translate(-50%, -50%) scale(0.3) rotateY(180deg);
+        opacity: 0;
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.05) rotateY(0deg);
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes robotGlow {
+    0% { 
+        text-shadow: 0 0 10px var(--primary-color);
+        filter: brightness(1);
+    }
+    100% { 
+        text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
+        filter: brightness(1.2);
+    }
+}
+
+/* Easter Egg Responsive */
+@media (max-width: 768px) {
+    .easter-egg-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    .easter-egg-body {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .robot-ascii pre {
+        font-size: 0.6rem;
+    }
+    
+    .easter-egg-stats {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
 }
 
 /* Contact Responsive */
