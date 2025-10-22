@@ -2894,3 +2894,151 @@ footer p {
         height: 80px;
     }
 }
+
+/* METEOR SECTION */
+.meteor-section {
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, #0b0f1a, #000);
+  padding: 100px 20px;
+  text-align: center;
+  color: #00d4ff;
+  overflow: hidden;
+}
+
+.meteor-section .section-header h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px #00d4ff, 0 0 30px #005eff;
+}
+
+.meteor-section .section-header p {
+  color: #a8e4ff;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  animation: glowText 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowText {
+  from { text-shadow: 0 0 10px #00d4ff; }
+  to { text-shadow: 0 0 25px #005eff, 0 0 50px #00d4ff; }
+}
+
+.meteor-section {
+    padding: 6rem 5%;
+    background: linear-gradient(135deg, rgba(255, 102, 0, 0.1) 0%, rgba(0, 0, 0, 0.9) 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#meteor-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.meteor-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 50px rgba(65, 123, 205, 0.5);
+}
+
+.meteor-teaser h3 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 20px var(--primary-color);
+    animation: comingSoonPulse 2s ease-in-out infinite;
+}
+
+.meteor-teaser p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin: 1.5rem 0;
+    line-height: 1.6;
+}
+
+.meteor-cta {
+    margin-top: 2rem;
+}
+
+.meteor-btn {
+    background: var(--gradient-primary);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    color: var(--dark-bg);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(65, 123, 205, 0.5);
+}
+
+.meteor-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(65, 123, 205, 0.8);
+}
+
+.meteor-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 102, 0, 0.1), transparent);
+    opacity: 0.5;
+    pointer-events: none;
+    animation: meteorGlow 4s ease-in-out infinite alternate;
+}
+
+/* Animations */
+@keyframes comingSoonPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes meteorGlow {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.7; }
+}
+
+@keyframes meteorFall {
+    0% {
+        transform: translateY(-100vh) translateX(0) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(50vw) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive for METEOR */
+@media (max-width: 768px) {
+    .meteor-teaser h3 {
+        font-size: 2rem;
+    }
+    .meteor-teaser p {
+        font-size: 1rem;
+    }
+    .meteor-content {
+        padding: 1.5rem;
+    }
+}
