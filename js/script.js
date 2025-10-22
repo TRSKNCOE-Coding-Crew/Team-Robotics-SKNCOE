@@ -351,6 +351,83 @@ class TrailParticle {
 let mouseX = 0;
 let mouseY = 0;
 
+// 3D Mouse Tracking for Holographic Display
+function init3DMouseTracking() {
+    const holographicDisplay = document.getElementById('holographic-display');
+    if (!holographicDisplay) {
+        console.log('Holographic display not found');
+        return;
+    }
+
+    console.log('Initializing 3D mouse tracking');
+    holographicDisplay.classList.add('mouse-tracking');
+
+    // Mouse move handler for 3D effect
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Get holographic display position and dimensions
+        const rect = holographicDisplay.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Calculate mouse position relative to display center (improved calculation)
+        const deltaX = (mouseX - centerX) / (rect.width / 2);
+        const deltaY = (mouseY - centerY) / (rect.height / 2);
+
+        // Calculate rotation angles (limit the rotation)
+        const maxRotation = 20; // Maximum rotation in degrees
+        const rotateY = deltaX * maxRotation;
+        const rotateX = -deltaY * maxRotation;
+
+        // Calculate translation for depth effect
+        const maxTranslate = 15;
+        const translateZ = (Math.abs(deltaX) + Math.abs(deltaY)) * maxTranslate;
+
+        // Apply 3D transform with proper perspective
+        holographicDisplay.style.transformStyle = 'preserve-3d';
+        holographicDisplay.style.transform = `
+            perspective(1200px) 
+            rotateY(${rotateY}deg) 
+            rotateX(${rotateX}deg) 
+            translateZ(${translateZ}px)
+            scale(${1 + (Math.abs(deltaX) + Math.abs(deltaY)) * 0.03})
+        `;
+
+        // Add subtle glow effect based on mouse proximity
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        const glowIntensity = Math.max(0.4, 1 - distance * 0.5);
+        
+        holographicDisplay.style.boxShadow = `
+            0 0 ${60 + glowIntensity * 40}px rgba(255, 102, 0, ${0.4 + glowIntensity * 0.2}),
+            inset 0 0 ${60 + glowIntensity * 40}px rgba(255, 102, 0, ${0.1 + glowIntensity * 0.1}),
+            0 ${20 + translateZ}px ${40 + translateZ}px rgba(0, 0, 0, 0.3)
+        `;
+    });
+
+    // Reset transform when mouse leaves the viewport
+    document.addEventListener('mouseleave', () => {
+        holographicDisplay.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg) translateZ(0px) scale(1)';
+        holographicDisplay.style.boxShadow = `
+            0 0 60px rgba(255, 102, 0, 0.4),
+            inset 0 0 60px rgba(255, 102, 0, 0.1),
+            0 20px 40px rgba(0, 0, 0, 0.3)
+        `;
+    });
+}
+
+// Initialize 3D mouse tracking when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, initializing 3D tracking');
+    init3DMouseTracking();
+});
+
+// Also try to initialize after a short delay in case of timing issues
+setTimeout(() => {
+    init3DMouseTracking();
+}, 1000);
+
 // Mouse move handler
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
