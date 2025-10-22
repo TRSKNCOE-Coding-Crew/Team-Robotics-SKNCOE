@@ -29,7 +29,6 @@
             </div>
         </div>
     </div>
-    </div>
 
     <header>
         <nav>
@@ -85,17 +84,40 @@
                     </div>
                 </div>
                 <div class="hologram-container">
+                    <!-- 3D Hologram Base -->
+                    <div class="hologram-base">
+                        <div class="base-ring ring-1"></div>
+                        <div class="base-ring ring-2"></div>
+                        <div class="base-ring ring-3"></div>
+                        <div class="base-projector">
+                            <div class="projector-beam"></div>
+                        </div>
+                    </div>
+
                     <div class="holographic-display" id="holographic-display">
-                        <!-- Hologram Frame -->
+                        <!-- Enhanced Hologram Frame -->
                         <div class="hologram-frame">
-                            <div class="frame-corner top-left"></div>
-                            <div class="frame-corner top-right"></div>
-                            <div class="frame-corner bottom-left"></div>
-                            <div class="frame-corner bottom-right"></div>
+                            <div class="frame-corner top-left">
+                                <div class="corner-glow"></div>
+                            </div>
+                            <div class="frame-corner top-right">
+                                <div class="corner-glow"></div>
+                            </div>
+                            <div class="frame-corner bottom-left">
+                                <div class="corner-glow"></div>
+                            </div>
+                            <div class="frame-corner bottom-right">
+                                <div class="corner-glow"></div>
+                            </div>
                             <div class="frame-line horizontal top"></div>
                             <div class="frame-line horizontal bottom"></div>
                             <div class="frame-line vertical left"></div>
                             <div class="frame-line vertical right"></div>
+
+                            <!-- 3D Depth Layers -->
+                            <div class="depth-layer layer-1"></div>
+                            <div class="depth-layer layer-2"></div>
+                            <div class="depth-layer layer-3"></div>
                         </div>
 
                         <!-- Holographic Content -->
@@ -146,41 +168,79 @@
                             </div>
 
                             <!-- Achievement Stream -->
-                            <div class="achievement-stream">
+                            <div class="achievement-section">
                                 <div class="stream-header">RECENT ACHIEVEMENTS</div>
-                                <div class="stream-items">
-                                    <div class="stream-item">🏆 Robotex India 2025 - Overall Championship</div>
-                                    <div class="stream-item">🥇 IIT Kharagpur Kshitij - 1st Runner-up</div>
-                                    <div class="stream-item">🥇 COEP Mindspark - 1st Place - Hackathon</div>
-                                    <div class="stream-item">🥇 COEP Mindspark - 1st Place - Robosoccer</div>
-                                    <div class="stream-item">🥇 COEP Mindspark - 3rd Place - Liftoff</div>
-                                    <div class="stream-item">🥈 IIT Roorkee Cognizance - 2nd Prize</div>
-                                    <div class="stream-item">🏆 Sinhgad Techtonic - 9 Prizes</div>
-                                    <div class="stream-item">🏆 Robotex India 2025 - Overall Championship</div>
-                                    <div class="stream-item">🥇 IIT Kharagpur Kshitij - 1st Runner-up</div>
-                                    <div class="stream-item">🥈 IIT Roorkee Cognizance - 2nd Prize</div>
-                                    <div class="stream-item">🏆 Sinhgad Techtonic - 9 Prizes</div>
+                                <div class="achievement-stream">
+                                    <div class="stream-items">
+                                        <!-- First set of achievements -->
+                                        <div class="stream-item">🏆 Robotex India 2025 - Overall Championship</div>
+                                        <div class="stream-item">🥇 IIT Kharagpur Kshitij - 1st Runner-up</div>
+                                        <div class="stream-item">🥇 COEP Mindspark - 1st Place - Hackathon</div>
+                                        <div class="stream-item">🥇 COEP Mindspark - 1st Place - Robosoccer</div>
+                                        <div class="stream-item">� COTEP Mindspark - 3rd Place - Liftoff</div>
+                                        <div class="stream-item">🥈 IIT Roorkee Cognizance - 2nd Prize</div>
+                                        <div class="stream-item">🏆 Sinhgad Techtonic - 9 Prizes</div>
+                                        <div class="stream-item">🥇 IIT Bombay Techfest - 1st Place</div>
+                                        <div class="stream-item">🥈 VIT Riviera - 2nd Prize</div>
+                                        <div class="stream-item">🏆 PICT Impetus - Overall Winners</div>
+
+                                        <!-- Duplicate set for seamless loop -->
+                                        <div class="stream-item">🏆 Robotex India 2025 - Overall Championship</div>
+                                        <div class="stream-item">🥇 IIT Kharagpur Kshitij - 1st Runner-up</div>
+                                        <div class="stream-item">🥇 COEP Mindspark - 1st Place - Hackathon</div>
+                                        <div class="stream-item">🥇 COEP Mindspark - 1st Place - Robosoccer</div>
+                                        <div class="stream-item">🥇 COEP Mindspark - 3rd Place - Liftoff</div>
+                                        <div class="stream-item">🥈 IIT Roorkee Cognizance - 2nd Prize</div>
+                                        <div class="stream-item">🏆 Sinhgad Techtonic - 9 Prizes</div>
+                                        <div class="stream-item">🥇 IIT Bombay Techfest - 1st Place</div>
+                                        <div class="stream-item">🥈 VIT Riviera - 2nd Prize</div>
+                                        <div class="stream-item">🏆 PICT Impetus - Overall Winners</div>
+                                    </div>
                                 </div>
                             </div>
-
-
                         </div>
 
-                        <!-- Holographic Effects -->
-                        <div class="hologram-effects">
-                            <div class="scan-line-animated"></div>
-                            <div class="glitch-overlay"></div>
-                            <div class="particle-field">
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                            </div>
+
+                    </div>
+
+                    <!-- Enhanced Holographic Effects -->
+                    <div class="hologram-effects">
+                        <div class="scan-line-animated"></div>
+                        <div class="scan-line-vertical"></div>
+                        <div class="glitch-overlay"></div>
+                        <div class="interference-pattern"></div>
+
+                        <!-- Enhanced Particle Field -->
+                        <div class="particle-field">
+                            <div class="particle floating"></div>
+                            <div class="particle floating"></div>
+                            <div class="particle floating"></div>
+                            <div class="particle floating"></div>
+                            <div class="particle floating"></div>
+                            <div class="particle floating"></div>
+                            <div class="particle orbiting"></div>
+                            <div class="particle orbiting"></div>
+                            <div class="particle orbiting"></div>
+                        </div>
+
+                        <!-- 3D Floating Elements -->
+                        <div class="floating-elements">
+                            <div class="float-cube cube-1"></div>
+                            <div class="float-cube cube-2"></div>
+                            <div class="float-cube cube-3"></div>
+                            <div class="float-ring ring-1"></div>
+                            <div class="float-ring ring-2"></div>
+                        </div>
+
+                        <!-- Energy Field -->
+                        <div class="energy-field">
+                            <div class="energy-wave wave-1"></div>
+                            <div class="energy-wave wave-2"></div>
+                            <div class="energy-wave wave-3"></div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             <div class="scroll-indicator">
                 <div class="scroll-arrow"></div>
@@ -1127,7 +1187,7 @@
                             <a href="mailto:roboticsfiles@gmail.com">roboticsfiles@gmail.com</a>
                         </div>
                     </div>
-                    
+
                     <div class="quick-item">
                         <span class="quick-icon">📍</span>
                         <div>
