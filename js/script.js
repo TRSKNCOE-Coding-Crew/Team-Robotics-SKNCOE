@@ -574,6 +574,115 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// METEOR Animation
+const meteorCanvas = document.getElementById('meteor-canvas');
+const meteorCtx = meteorCanvas.getContext('2d');
+let meteorParticles = [];
+
+function initMeteorAnimation() {
+    meteorCanvas.width = window.innerWidth;
+    meteorCanvas.height = window.innerHeight;
+
+    // Create meteor particles
+    for (let i = 0; i < 10; i++) {
+        meteorParticles.push({
+            x: Math.random() * meteorCanvas.width,
+            y: -50,
+            speedX: Math.random() * 5 + 2,
+            speedY: Math.random() * 5 + 2,
+            size: Math.random() * 3 + 1,
+            opacity: 1,
+            trail: []
+        });
+    }
+
+    animateMeteors();
+}
+
+function animateMeteors() {
+    meteorCtx.clearRect(0, 0, meteorCanvas.width, meteorCanvas.height);
+
+    meteorParticles.forEach((particle, index) => {
+        // Update trail
+        particle.trail.push({ x: particle.x, y: particle.y, opacity: particle.opacity });
+        if (particle.trail.length > 20) particle.trail.shift();
+
+        // Draw trail
+        particle.trail.forEach((point, i) => {
+            meteorCtx.save();
+            meteorCtx.globalAlpha = point.opacity * (i / particle.trail.length);
+            meteorCtx.fillStyle = `rgba(255, 102, 0, ${point.opacity})`;
+            meteorCtx.beginPath();
+            meteorCtx.arc(point.x, point.y, particle.size * (i / particle.trail.length), 0, Math.PI * 2);
+            meteorCtx.fill();
+            meteorCtx.restore();
+        });
+
+        // Update position
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+        particle.opacity -= 0.005;
+
+        // Reset if off-screen
+        if (particle.y > meteorCanvas.height || particle.x > meteorCanvas.width || particle.opacity <= 0) {
+            particle.x = Math.random() * meteorCanvas.width;
+            particle.y = -50;
+            particle.opacity = 1;
+            particle.trail = [];
+        }
+    });
+
+    requestAnimationFrame(animateMeteors);
+}
+
+// Initialize METEOR on load
+document.addEventListener('DOMContentLoaded', () => {
+    if (meteorCanvas) {
+        initMeteorAnimation();
+    }
+
+    // Fun interaction: Click to create explosion effect
+    meteorCanvas.addEventListener('click', (e) => {
+        const explosion = {
+            x: e.clientX,
+            y: e.clientY,
+            particles: []
+        };
+        for (let i = 0; i < 20; i++) {
+            explosion.particles.push({
+                x: explosion.x,
+                y: explosion.y,
+                vx: (Math.random() - 0.5) * 10,
+                vy: (Math.random() - 0.5) * 10,
+                life: 1
+            });
+        }
+        // Animate explosion (simple fade-out)
+        const animateExplosion = () => {
+            meteorCtx.clearRect(0, 0, meteorCanvas.width, meteorCanvas.height);
+            explosion.particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life -= 0.02;
+                if (p.life > 0) {
+                    meteorCtx.save();
+                    meteorCtx.globalAlpha = p.life;
+                    meteorCtx.fillStyle = `rgba(255, 102, 0, ${p.life})`;
+                    meteorCtx.beginPath();
+                    meteorCtx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+                    meteorCtx.fill();
+                    meteorCtx.restore();
+                }
+            });
+            if (explosion.particles.some(p => p.life > 0)) {
+                requestAnimationFrame(animateExplosion);
+            }
+        };
+        animateExplosion();
+    });
+});
+
+
 // Add CSS animations
 const style = document.createElement('style');
 style.textContent = `
