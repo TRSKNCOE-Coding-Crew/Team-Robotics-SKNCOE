@@ -3858,6 +3858,29 @@ footer p {
     }
 }
 
+/* Secret Easter Egg Hint Animation */
+@keyframes secretHint {
+    0%, 90%, 100% { 
+        transform: scale(1); 
+        filter: drop-shadow(0 0 10px var(--primary-color));
+    }
+    95% { 
+        transform: scale(1.02); 
+        filter: drop-shadow(0 0 20px var(--primary-color));
+    }
+}
+
+.logo {
+    animation: secretHint 8s ease-in-out infinite;
+}
+
+/* Click indicator styles */
+@keyframes slideUp {
+    from { transform: translateX(-50%) translateY(0); opacity: 1; }
+    to { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+}
+
+
 /* METEOR SECTION */
 .meteor-section {
   position: relative;
@@ -4005,6 +4028,8 @@ footer p {
         padding: 1.5rem;
     }
 }
+
+
 /* Force Robocon section to stay visible */
 .robocon-year {
     opacity: 1 !important;
